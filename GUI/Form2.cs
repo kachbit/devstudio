@@ -19,6 +19,17 @@ namespace GUI
         {
             InitializeComponent();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Panel pnlTop = new Panel() { Height = 4, Dock = DockStyle.Top, BackColor = Color.Black };
+            this.Controls.Add(pnlTop);
+
+            Panel pnlRight = new Panel() { Width = 4, Dock = DockStyle.Right, BackColor = Color.Black };
+            this.Controls.Add(pnlRight);
+
+            Panel pnlBottom = new Panel() { Height = 4, Dock = DockStyle.Bottom, BackColor = Color.Black };
+            this.Controls.Add(pnlBottom);
+
+            Panel pnlLeft = new Panel() { Width = 4, Dock = DockStyle.Left, BackColor = Color.Black };
+            this.Controls.Add(pnlLeft);
         }
 
         
@@ -54,5 +65,12 @@ namespace GUI
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://devstudioapp.github.io/devstudio/");
+        }
+
+   
     }
 }
