@@ -7,57 +7,84 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
- using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using ScintillaNET;
- using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
- using System.Runtime.InteropServices;
- /*
-namespace ExtensionMethods
-{
-    public static class MyExtensions
-    {
-        public static void TabFileLocation(this object str, string a)
-        {
-            Console.WriteLine("lol works"); 
-        }
-    }
+using System.Runtime.InteropServices;
+using System.Data;
+using Microsoft.Toolkit;
 
-}*/
 
+
+
+ 
 namespace GUI
 {
+
     
 
     public partial class Form1 : Form
     {
-        void log(object val)
-        {
 
+        
+
+
+
+
+        public void log(object val)
+        {
             Console.WriteLine(val);
         }
 
+
+        public IEnumerable<Control> GetAll(Control control, Type type)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
+        }
+
+
+
+
+        Button savedpath;
         Process cmdProcess = null;
         StreamWriter stdin = null;
  
-
         public Form1(string value1, string path1)
         {
-             
-            InitializeComponent();
-  
- 
 
+            InitializeComponent();
+
+
+
+       
+        //    button.Click += Button_Click;
+
+
+
+
+
+            treeView1.DrawMode = TreeViewDrawMode.OwnerDrawText;
+            treeView1.DrawMode = TreeViewDrawMode.OwnerDrawText;
+
+            var tab = new TabPadding(tabControl1);
+
+ 
             menuStrip1.Renderer = new MyRenderer();
             panel1.Visible = false;
- 
+
 
             if (value1 != "")
             {
                 Console.WriteLine(value1);
             }
-            if (value1 == "") { 
-            //do nothin
+            if (value1 == "")
+            {
+                //do nothin
             }
             else
             {
@@ -67,6 +94,7 @@ namespace GUI
                 {
                     treeView1.AfterSelect += treeView1_AfterSelect;
                     BuildTree(directoryInfo, treeView1.Nodes);
+                    treeView1.Nodes[0].Expand();
                 }
 
             }
@@ -78,7 +106,7 @@ namespace GUI
                     generateTab(path1, "html");
                 }
                 else { generateTab(path1); }
-               
+
             }
             else
             {
@@ -86,12 +114,12 @@ namespace GUI
 
         }
 
- 
-            ScintillaNET.Scintilla CodeArea;
-        private Point DragStartPosition = Point.Empty;
- 
 
- 
+        ScintillaNET.Scintilla CodeArea;
+        private Point DragStartPosition = Point.Empty;
+
+        
+
 
         private void tabControl1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -152,7 +180,11 @@ namespace GUI
         {
             int Index1 = tabControl1.TabPages.IndexOf(tp1);
             int Index2 = tabControl1.TabPages.IndexOf(tp2);
-            tabControl1.TabPages[Index1] = tp2;
+            try
+            {
+                tabControl1.TabPages[Index1] = tp2;
+            }
+            catch { }
             tabControl1.TabPages[Index2] = tp1;
         }
 
@@ -160,91 +192,30 @@ namespace GUI
         private void BuildTree(DirectoryInfo directoryInfo, TreeNodeCollection addInMe)
         {
             TreeNode curNode = addInMe.Add(directoryInfo.Name);
-
+            
             foreach (FileInfo file in directoryInfo.GetFiles())
             {
                 curNode.Nodes.Add(file.FullName, file.Name);
+                curNode.Name = file.FullName;
+                
             }
+            
             foreach (DirectoryInfo subdir in directoryInfo.GetDirectories())
             {
+                
                 BuildTree(subdir, curNode.Nodes);
             }
+
+            
         }
+        
 
         public void generateTab(string tabpath, string type = "txt")
         {
-
-
-            /*var txtbox2 = new System.Windows.Forms.RichTextBox();
-            txtbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txtbox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtbox2.Location = new System.Drawing.Point(3, 3);
-            txtbox2.Size = new System.Drawing.Size(995, 553);
-            txtbox2.TabIndex = 2;
-            if (tabpath != "Untitled*")
-            {
-                //    txtbox2.Text = System.IO.File.ReadAllText(tabpath);
-
-                using (BinaryReader br = new BinaryReader(File.Open(tabpath, FileMode.Open)))
-                {
-                    var data = br.ReadChars((int)br.BaseStream.Length);
-                    StringBuilder sb = new StringBuilder();
-                    foreach (char c in data)
-                        if ((int)c > 0) sb.Append(c.ToString()); else sb.Append(".");
-                    txtbox2.Text = sb.ToString();
-                }
-
-                log(System.IO.File.ReadAllBytes(tabpath).ToString());
-            }
-            txtbox2.BackColor = System.Drawing.Color.FromArgb(27, 28, 38);
-            txtbox2.ForeColor = System.Drawing.Color.FromArgb(171, 178, 191);
-            txtbox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            TabPage createdtabpage2 = new TabPage(Path.GetFileName(tabpath));
-            createdtabpage2.Padding = new System.Windows.Forms.Padding(4);
-            createdtabpage2.Name = Path.GetFileName(tabpath);
-            tabControl1.SelectedTab = createdtabpage2;
-            Console.WriteLine(tabControl1.SelectedIndex);
-            Array fulltabsarray = tabControl1.TabPages.Cast<TabPage>().ToArray();
-            foreach (var i in fulltabsarray)
-            {
-                if (i.ToString().Contains(createdtabpage2.ToString()))
-                {
-                    if (tabpath != "Untitled*")
-                    {
-                        tabControl1.TabPages.Remove(tabControl1.TabPages[Path.GetFileName(tabpath)]);
-                        tabControl1.SelectedTab = tabControl1.TabPages[Path.GetFileName(tabpath)];
-                    }
-                }
-            }
-            createdtabpage2.BackColor = System.Drawing.Color.FromArgb(39, 41, 56);
-            tabControl1.TabPages.Add(createdtabpage2);
-            createdtabpage2.Controls.Add(txtbox2);
-
-            txtbox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CSharp_syntaxHighlighting);
-            
-            
-
-
-
-
-
-            tabControl1.SelectedTab = createdtabpage2;
-            log(createdtabpage2.Controls);
-            if (type == "html") {
-                Button previewhtml = new Button();
-                previewhtml.Text = "see";
-                statusStrip1.Controls.Add(previewhtml);
-            }*/
-
-
-
-
-
-
-            // expiremental:
-
+ 
             CodeArea = new ScintillaNET.Scintilla();
+            CodeArea.Name = "CodeArea";
+            CodeArea.KeyPress += new KeyPressEventHandler(this.codeareaModified); 
             CodeArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
             CodeArea.Dock = System.Windows.Forms.DockStyle.Fill;
             CodeArea.Location = new System.Drawing.Point(3, 3);
@@ -281,20 +252,19 @@ namespace GUI
             tabControl1.SelectedTab = createdtabpage2;
             Console.WriteLine(tabControl1.SelectedIndex);
             Array fulltabsarray = tabControl1.TabPages.Cast<TabPage>().ToArray();
-            
+
             createdtabpage2.BackColor = System.Drawing.Color.FromArgb(39, 41, 56);
             tabControl1.TabPages.Add(createdtabpage2);
             createdtabpage2.Controls.Add(CodeArea);
 
 
-
-
+            
             tabControl1.SelectedTab = createdtabpage2;
             log(createdtabpage2.Controls);
             if (type == "html")
             {
                 Button previewhtml = new Button();
-                previewhtml.Text = "see"; 
+                previewhtml.Text = "see";
                 statusStrip1.Controls.Add(previewhtml);
 
                 //  log("html");
@@ -302,12 +272,15 @@ namespace GUI
 
             foreach (var i in fulltabsarray)
             {
-                if (i.ToString().Contains(createdtabpage2.ToString()))
+                if (i.ToString().Contains(createdtabpage2.ToString()) || i.ToString().Contains(createdtabpage2.Text + "*"))
                 {
                     if (tabpath != "Untitled*")
                     {
                         tabControl1.TabPages.Remove(tabControl1.SelectedTab);
                         tabControl1.SelectedTab = tabControl1.TabPages[Path.GetFileName(tabpath)];
+
+                      //  MessageBox.Show(i.ToString());
+                      //  MessageBox.Show(createdtabpage2.Text);
                     }
                 }
             }
@@ -315,31 +288,35 @@ namespace GUI
 
         }
 
-        
+
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            if (e.Node.Name != "")
+            if (e.Node.Text != "")
             {
-
+  
                 //  newfile(Path.GetFileName(e.Node.Name));
                 generateTab(e.Node.Name);
 
-               
+                 Button savedpath = new Button();
+                 savedpath.Text = e.Node.Name;
+                 savedpath.Visible = false;
+                 savedpath.Name = "savedpath";
+                 savedpath.ForeColor = Color.White;
+                 tabControl1.SelectedTab.Controls.Add(savedpath);
+
             }
-           
+
 
         }
 
-        private void newfile(string filelocation)
-        {
-        }
+        private void codeareaModified(object sender, System.EventArgs e) {
 
-
-        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            if (tabControl1.SelectedTab.Text.EndsWith("*")) { }
+            else {
+                tabControl1.SelectedTab.Text += "*";
+            }
         }
 
         private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -395,27 +372,16 @@ namespace GUI
                 }
             }
 
-            MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
+        //    MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
 
-            var txtbox = new System.Windows.Forms.RichTextBox();
-            txtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txtbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtbox.Location = new System.Drawing.Point(3, 3);
-            txtbox.Size = new System.Drawing.Size(995, 553);
-            txtbox.TabIndex = 2;
-            txtbox.Text = "";
-            txtbox.BackColor = System.Drawing.Color.FromArgb(39, 41, 56);
-            txtbox.ForeColor = System.Drawing.Color.White;
+            generateTab(filePath);
 
-
-
-            TabPage myTabPage = new TabPage(Path.GetFileName(filePath));
-            myTabPage.Padding = new System.Windows.Forms.Padding(4);
-            myTabPage.BackColor = System.Drawing.Color.FromArgb(39, 41, 56);
-            tabControl1.TabPages.Add(myTabPage);
-            myTabPage.Controls.Add(txtbox);
-            tabControl1.SelectedTab = myTabPage;
-
+            Button savedpath = new Button();
+            savedpath.Text = filePath;
+            savedpath.Visible = false;
+            savedpath.Name = "savedpath";
+            savedpath.ForeColor = Color.White;
+            tabControl1.SelectedTab.Controls.Add(savedpath);
         }
 
         private void folderToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -560,10 +526,10 @@ namespace GUI
             int count = 0;
             var pStartInfo = new ProcessStartInfo
             {
-                FileName = "cmd.exe",
+                FileName = "powershell.exe",
                 //Batch File Arguments = "/C START /b /WAIT testbatch1.bat",
                 //Test: Arguments = "START /WAIT /K ipconfig /all",
-                Arguments = "START /WAIT",
+             //   Arguments = "START /WAIT",
                 WorkingDirectory = Environment.SystemDirectory,
                 // WorkingDirectory = Application.StartupPath,
                 RedirectStandardOutput = true,
@@ -601,24 +567,23 @@ namespace GUI
                         //   richTextBox1.Text = richTextBox1.Text.Remove(richTextBox1.Text.LastIndexOf(Environment.NewLine));
                         //    }
 
-                    /*    try
-                        {
-                            richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.Text.LastIndexOf(Environment.NewLine));
-                        }
-                        catch
-                        {
-                            //                 richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.Text.LastIndexOf("\n"));
-                        }
-                        if (richTextBox1.Text.Contains(">")) { }
-                        else
-                        {
-                            richTextBox1.AppendText(" > ");
-                        }*/
+                        /*    try
+                            {
+                                richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.Text.LastIndexOf(Environment.NewLine));
+                            }
+                            catch
+                            {
+                                //                 richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.Text.LastIndexOf("\n"));
+                            }
+                            if (richTextBox1.Text.Contains(">")) { }
+                            else
+                            {
+                                richTextBox1.AppendText(" > ");
+                            }*/
                         richTextBox1.ScrollToCaret();
                         richTextBox1.SelectAll();
-                //        
-                        richTextBox1.SelectionProtected = true;
-        //                richTextBox1.Text = richTextBox1.Text.Remove(richTextBox1.Text.Length - 1);
+                        //        
+                         //                richTextBox1.Text = richTextBox1.Text.Remove(richTextBox1.Text.Length - 1);
 
 
                     }));
@@ -697,30 +662,29 @@ namespace GUI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var textBox = (RichTextBox)tabControl1.SelectedTab.Controls["txtbox2"];
-            MessageBox.Show(textBox.Text);
-            /*string writeText = createdtabpage;  // Create a text string
-            File.WriteAllText("filename.txt", writeText);  // Create a file and write the content of writeText to it
+            if (tabControl1.SelectedTab.Text == "Untitled*")
+            {
+                saveAsToolStripMenuItem.PerformClick();
+            }
+            else {
+                if (tabControl1.SelectedTab.Text != "{Welcome}" || tabControl1.SelectedTab.Text != "{Welcome}*") { 
+                string writeText = tabControl1.SelectedTab.Controls.Find("CodeArea", true)[0].Text;  // Create a text string
+                File.WriteAllText(tabControl1.SelectedTab.Controls.Find("savedpath", true)[0].Text, writeText);
+                }
+            }
 
-            string readText = File.ReadAllText("filename.txt");  // Read the contents of the file
-            Console.WriteLine(readText);*/
+            if (tabControl1.SelectedTab.Text.EndsWith("*")) {
+                tabControl1.SelectedTab.Text = tabControl1.SelectedTab.Text.TrimEnd('*');
+            }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
-        {
-        }
-
+ 
         private class MyRenderer : ToolStripProfessionalRenderer
         {
             public MyRenderer() : base(new MyColors()) { }
         }
 
-        private class   MyColors : ProfessionalColorTable
+        private class MyColors : ProfessionalColorTable
         {
 
             public override Color MenuItemSelected
@@ -753,54 +717,32 @@ namespace GUI
         }
 
 
-       
+
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            if (tabControl1.SelectedTab.Text == "{Welcome}")
             {
-              /*  openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-                    }
-                }*/
-         ///       Console.WriteLine(filePath);
-                System.IO.Stream myStream;
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-                saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                saveFileDialog1.FilterIndex = 2;
-                saveFileDialog1.RestoreDirectory = true;
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    if ((myStream = saveFileDialog1.OpenFile()) != null)
-                    {
-                        Console.WriteLine(saveFileDialog1.FileName);
-                    ///    Console.WriteLine(createdtabpage2.Controls.txtbox2.Text);
-                        //       File.WriteAllLines("C:/", createdtabpage2.Controls.txtbox2);
-                        myStream.Close();
-                    }
-                }
-
-                
+                MessageBox.Show("Create a file or project to save your work.", "Can't save file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
+            else { 
+            savedpath = new Button();
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                savedpath.Text = saveFileDialog1.FileName;
+                savedpath.Visible = false;
+                savedpath.Name = "savedpath";
+                savedpath.ForeColor = Color.White;
+                tabControl1.SelectedTab.Controls.Add(savedpath);
+                tabControl1.SelectedTab.Text = Path.GetFileName(saveFileDialog1.FileName);
+                File.WriteAllText(saveFileDialog1.FileName, CodeArea.Text);
+            }
+        }
 
         }
 
@@ -818,7 +760,7 @@ namespace GUI
 
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var n = new Form1("","");
+            var n = new Form1("", "");
             n.Show();
         }
 
@@ -838,17 +780,109 @@ namespace GUI
             log(btn.Text);
         }
 
-    
-         
+
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
- 
+
+        private void tabControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (tabControl1.TabPages.Count > 1) { 
+                for (int ix = 0; ix < tabControl1.TabCount; ++ix)
+                {
+                    if (tabControl1.GetTabRect(ix).Contains(e.Location))
+                    {
+                        tabControl1.TabPages[ix].Dispose();
+                        break;
+                    }
+                }
+                }
+            }
+        }
+
+        private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            var selected = (e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected;
+
+            if (selected)
+            {
+                var font = e.Node.NodeFont ?? e.Node.TreeView.Font;
+                e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+                TextRenderer.DrawText(e.Graphics, e.Node.Text, font, e.Bounds, SystemColors.HighlightText, TextFormatFlags.GlyphOverhangPadding);
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
+        }
+
  
     }
-   
 }
 
 // 
+
+
+public class TabPadding : NativeWindow
+{
+    
+
+    
+    private const int WM_PAINT = 0xF;
+
+    private TabControl tabControl;
+
+    public TabPadding(TabControl tc)
+    {
+        Console.WriteLine("hi");
+        tabControl = tc;
+        tabControl.Selected += new TabControlEventHandler(tabControl_Selected);
+        AssignHandle(tc.Handle);
+    }
+
+    void tabControl_Selected(object sender, TabControlEventArgs e)
+    {
+        tabControl.Invalidate();
+    }
+
+    protected override void WndProc(ref Message m)
+    {
+        base.WndProc(ref m);
+
+        if (m.Msg == WM_PAINT)
+        {
+            using (Graphics g = Graphics.FromHwnd(m.HWnd))
+            {
+
+                //Replace the outside white borders:
+                if (tabControl.Parent != null)
+                {
+                    g.SetClip(new Rectangle(0, 0, tabControl.Width - 2, tabControl.Height - 1), CombineMode.Exclude);
+                    using (SolidBrush sb = new SolidBrush(tabControl.Parent.BackColor))
+                        g.FillRectangle(sb, new Rectangle(0,
+                                                          tabControl.ItemSize.Height + 2,
+                                                          tabControl.Width,
+                                                          tabControl.Height - (tabControl.ItemSize.Height + 2)));
+                }
+
+                //Replace the inside white borders:
+                if (tabControl.SelectedTab != null)
+                {
+                    g.ResetClip();
+                    Rectangle r = tabControl.SelectedTab.Bounds;
+                    g.SetClip(r, CombineMode.Exclude);
+                    using (SolidBrush sb = new SolidBrush(tabControl.SelectedTab.BackColor))
+                        g.FillRectangle(sb, new Rectangle(r.Left - 3,
+                                                          r.Top - 1,
+                                                          r.Width + 4,
+                                                          r.Height + 3));
+                }
+            }
+        }
+    }
+}

@@ -84,11 +84,13 @@ namespace GUI
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -110,16 +112,15 @@ namespace GUI
             this.newProjectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem1,
             this.fileToolStripMenuItem1});
-            this.newProjectToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.newProjectToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.newProjectToolStripMenuItem.Text = "New";
-            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // projectToolStripMenuItem1
             // 
             this.projectToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.projectToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.projectToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.projectToolStripMenuItem1.Name = "projectToolStripMenuItem1";
             this.projectToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.projectToolStripMenuItem1.Text = "Project";
@@ -128,7 +129,7 @@ namespace GUI
             // fileToolStripMenuItem1
             // 
             this.fileToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
@@ -142,7 +143,7 @@ namespace GUI
             this.projectToolStripMenuItem2,
             this.folderToolStripMenuItem1,
             this.fileToolStripMenuItem2});
-            this.openProjectToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.openProjectToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
             this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.openProjectToolStripMenuItem.Text = "Open";
@@ -150,7 +151,7 @@ namespace GUI
             // projectToolStripMenuItem2
             // 
             this.projectToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.projectToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.projectToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.projectToolStripMenuItem2.Name = "projectToolStripMenuItem2";
             this.projectToolStripMenuItem2.Size = new System.Drawing.Size(111, 22);
             this.projectToolStripMenuItem2.Text = "Project";
@@ -158,7 +159,7 @@ namespace GUI
             // folderToolStripMenuItem1
             // 
             this.folderToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.folderToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.folderToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.folderToolStripMenuItem1.Name = "folderToolStripMenuItem1";
             this.folderToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
             this.folderToolStripMenuItem1.Text = "Folder";
@@ -167,7 +168,7 @@ namespace GUI
             // fileToolStripMenuItem2
             // 
             this.fileToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
             this.fileToolStripMenuItem2.Size = new System.Drawing.Size(111, 22);
             this.fileToolStripMenuItem2.Text = "File";
@@ -176,7 +177,7 @@ namespace GUI
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.saveToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.saveToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
@@ -186,7 +187,7 @@ namespace GUI
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.saveAsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.saveAsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
@@ -195,7 +196,7 @@ namespace GUI
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.exitToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exitToolStripMenuItem.Text = "Exit";
@@ -221,7 +222,7 @@ namespace GUI
             // terminalToolStripMenuItem
             // 
             this.terminalToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.terminalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.terminalToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
             this.terminalToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.terminalToolStripMenuItem.Text = "Terminal";
@@ -230,7 +231,7 @@ namespace GUI
             // treeViewToolStripMenuItem
             // 
             this.treeViewToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.treeViewToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.treeViewToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.treeViewToolStripMenuItem.Name = "treeViewToolStripMenuItem";
             this.treeViewToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.treeViewToolStripMenuItem.Text = "File Tree";
@@ -249,18 +250,18 @@ namespace GUI
             // runToolStripMenuItem1
             // 
             this.runToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.runToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.runToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.runToolStripMenuItem1.Name = "runToolStripMenuItem1";
-            this.runToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
-            this.runToolStripMenuItem1.Text = "Run";
+            this.runToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.runToolStripMenuItem1.Text = "Run Project";
             // 
             // buildToolStripMenuItem1
             // 
             this.buildToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.buildToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.buildToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.buildToolStripMenuItem1.Name = "buildToolStripMenuItem1";
-            this.buildToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
-            this.buildToolStripMenuItem1.Text = "Build";
+            this.buildToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.buildToolStripMenuItem1.Text = "Build Project";
             // 
             // projectToolStripMenuItem
             // 
@@ -275,7 +276,7 @@ namespace GUI
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.newToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.newToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.newToolStripMenuItem.Text = "New";
@@ -284,7 +285,7 @@ namespace GUI
             // propertiesToolStripMenuItem
             // 
             this.propertiesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.propertiesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.propertiesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
@@ -304,7 +305,7 @@ namespace GUI
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.newWindowToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.newWindowToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
             this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.newWindowToolStripMenuItem.Text = "New Window";
@@ -313,7 +314,7 @@ namespace GUI
             // maximizeToolStripMenuItem
             // 
             this.maximizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.maximizeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.maximizeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.maximizeToolStripMenuItem.Name = "maximizeToolStripMenuItem";
             this.maximizeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.maximizeToolStripMenuItem.Text = "Maximize ";
@@ -322,7 +323,7 @@ namespace GUI
             // minimizeToolStripMenuItem
             // 
             this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.minimizeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.minimizeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
             this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.minimizeToolStripMenuItem.Text = "Minimize";
@@ -331,7 +332,7 @@ namespace GUI
             // lauchTheInstallerToolStripMenuItem
             // 
             this.lauchTheInstallerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.lauchTheInstallerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.lauchTheInstallerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.lauchTheInstallerToolStripMenuItem.Name = "lauchTheInstallerToolStripMenuItem";
             this.lauchTheInstallerToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.lauchTheInstallerToolStripMenuItem.Text = "Lauch the Installer";
@@ -351,7 +352,7 @@ namespace GUI
             // docsToolStripMenuItem
             // 
             this.docsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.docsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.docsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.docsToolStripMenuItem.Name = "docsToolStripMenuItem";
             this.docsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.docsToolStripMenuItem.Text = "Docs";
@@ -359,7 +360,7 @@ namespace GUI
             // websiteToolStripMenuItem
             // 
             this.websiteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.websiteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.websiteToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
             this.websiteToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.websiteToolStripMenuItem.Text = "Website";
@@ -367,7 +368,7 @@ namespace GUI
             // reportBugToolStripMenuItem
             // 
             this.reportBugToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.reportBugToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.reportBugToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.reportBugToolStripMenuItem.Name = "reportBugToolStripMenuItem";
             this.reportBugToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.reportBugToolStripMenuItem.Text = "Report Bug";
@@ -401,31 +402,32 @@ namespace GUI
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(197, 51);
             this.tabControl1.Multiline = true;
-
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1076, 336);
             this.tabControl1.TabIndex = 0;
-              this.tabControl1.DragOver += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragOver);
-             this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
+            this.tabControl1.DragOver += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragOver);
+            this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
+            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
-            this.tabPage1.Controls.Add(this.vScrollBar1);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.vScrollBar1);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1068, 307);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Welcome";
+            this.tabPage1.Text = "{Welcome}";
             // 
             // vScrollBar1
             // 
@@ -440,7 +442,7 @@ namespace GUI
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(283, 45);
+            this.label2.Location = new System.Drawing.Point(542, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 42);
             this.label2.TabIndex = 11;
@@ -451,7 +453,7 @@ namespace GUI
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(85)))));
-            this.button2.Location = new System.Drawing.Point(148, 144);
+            this.button2.Location = new System.Drawing.Point(148, 182);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 42);
@@ -465,7 +467,7 @@ namespace GUI
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(85)))));
-            this.button1.Location = new System.Drawing.Point(53, 144);
+            this.button1.Location = new System.Drawing.Point(53, 182);
             this.button1.Margin = new System.Windows.Forms.Padding(10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 42);
@@ -480,7 +482,7 @@ namespace GUI
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(18, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(302, 96);
             this.label1.TabIndex = 0;
@@ -491,7 +493,7 @@ namespace GUI
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(85)))));
-            this.button5.Location = new System.Drawing.Point(53, 206);
+            this.button5.Location = new System.Drawing.Point(53, 244);
             this.button5.Margin = new System.Windows.Forms.Padding(10);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(97, 42);
@@ -504,7 +506,7 @@ namespace GUI
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(85)))));
-            this.button3.Location = new System.Drawing.Point(244, 206);
+            this.button3.Location = new System.Drawing.Point(244, 244);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 42);
@@ -518,7 +520,7 @@ namespace GUI
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(169)))), ((int)(((byte)(211)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(85)))));
-            this.button4.Location = new System.Drawing.Point(148, 206);
+            this.button4.Location = new System.Drawing.Point(148, 244);
             this.button4.Margin = new System.Windows.Forms.Padding(10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(97, 42);
@@ -539,13 +541,14 @@ namespace GUI
             // 
             this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.ForeColor = System.Drawing.SystemColors.Window;
             this.treeView1.Location = new System.Drawing.Point(0, 51);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(197, 336);
             this.treeView1.TabIndex = 1;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
+            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             // 
             // label3
             // 
@@ -568,6 +571,7 @@ namespace GUI
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.Window;
             this.richTextBox1.Location = new System.Drawing.Point(0, 29);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(1273, 139);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
@@ -637,7 +641,6 @@ namespace GUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1273, 168);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // textBox1
             // 
@@ -689,6 +692,17 @@ namespace GUI
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             this.toolStripSplitButton1.ToolTipText = "Run Project";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(34, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(538, 193);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -704,7 +718,7 @@ namespace GUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevStudio";
+            this.Text = "DevStudio BETA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -716,6 +730,7 @@ namespace GUI
             this.panel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -776,6 +791,7 @@ namespace GUI
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
